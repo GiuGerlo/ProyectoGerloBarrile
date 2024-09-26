@@ -39,12 +39,15 @@ namespace ProyectoServidorGerloBarrile
             this.entradaTxt.Name = "entradaTxt";
             this.entradaTxt.Size = new System.Drawing.Size(411, 23);
             this.entradaTxt.TabIndex = 0;
+            this.entradaTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entradaTxt_KeyDown);
             // 
             // salidaTxt
             // 
             this.salidaTxt.Location = new System.Drawing.Point(47, 76);
+            this.salidaTxt.Multiline = true;
             this.salidaTxt.Name = "salidaTxt";
-            this.salidaTxt.Size = new System.Drawing.Size(411, 23);
+            this.salidaTxt.ReadOnly = true;
+            this.salidaTxt.Size = new System.Drawing.Size(411, 209);
             this.salidaTxt.TabIndex = 1;
             // 
             // Servidor
@@ -55,7 +58,8 @@ namespace ProyectoServidorGerloBarrile
             this.Controls.Add(this.salidaTxt);
             this.Controls.Add(this.entradaTxt);
             this.Name = "Servidor";
-            this.Text = "Form1";
+            this.Text = "ServidorGB";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Servidor_FormClosing);
             this.Load += new System.EventHandler(this.Servidor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

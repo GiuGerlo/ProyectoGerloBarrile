@@ -80,7 +80,7 @@ namespace ProyectoServidorGerloBarrile
         {
             try
             {
-                if( e.KeyCode == Keys.Enter && entradaTxt.ReadOnly == false)
+                if( e.KeyCode == Keys.Enter && entradaTxt.ReadOnly == false && escritor != null)
                 {
                     escritor.Write("SERVIDOR>>> " + entradaTxt.Text);
                     salidaTxt.Text += "\r\nSERVIDOR>>> " + entradaTxt.Text;
