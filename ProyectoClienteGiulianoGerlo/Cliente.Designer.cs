@@ -31,6 +31,8 @@ namespace ProyectoClienteGiulianoGerlo
         {
             this.entradaTxt = new System.Windows.Forms.TextBox();
             this.salidaTxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.direccionTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // entradaTxt
@@ -51,11 +53,29 @@ namespace ProyectoClienteGiulianoGerlo
             this.salidaTxt.TabIndex = 1;
             this.salidaTxt.TextChanged += new System.EventHandler(this.salidaTxt_TextChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(574, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "IP:";
+            // 
+            // direccionTxt
+            // 
+            this.direccionTxt.Location = new System.Drawing.Point(595, 12);
+            this.direccionTxt.Name = "direccionTxt";
+            this.direccionTxt.Size = new System.Drawing.Size(100, 23);
+            this.direccionTxt.TabIndex = 3;
+            // 
             // ClienteChatFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 362);
+            this.Controls.Add(this.direccionTxt);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.salidaTxt);
             this.Controls.Add(this.entradaTxt);
             this.Name = "ClienteChatFrm";
@@ -71,6 +91,8 @@ namespace ProyectoClienteGiulianoGerlo
 
         private System.Windows.Forms.TextBox entradaTxt;
         private System.Windows.Forms.TextBox salidaTxt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox direccionTxt;
     }
 }
 

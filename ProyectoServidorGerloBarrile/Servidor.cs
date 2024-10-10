@@ -109,7 +109,7 @@ namespace ProyectoServidorGerloBarrile
             try
             {
                 //Paso1 crea tcplistener
-                IPAddress local = IPAddress.Parse("127.0.0.1");
+                IPAddress local = IPAddress.Parse(salidaTxt.Text);
                 oyente = new TcpListener(local, 50000);
 
                 //Paso2 espera la solicitud de conexion
@@ -177,5 +177,15 @@ namespace ProyectoServidorGerloBarrile
             }
 
         } //fin metodo EjecutarServido
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void direccionTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     } //fin clase
 }
