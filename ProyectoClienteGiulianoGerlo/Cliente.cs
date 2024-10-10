@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Net.Sockets;
 using System.IO;
+using System.Net;
 
 namespace ProyectoClienteGiulianoGerlo
 {
@@ -28,8 +29,11 @@ namespace ProyectoClienteGiulianoGerlo
         private string mensaje = "";
 
         //inicia el subproceso para lectura
-        private void ClienteChatFrm_Load( object sender, EventArgs e)
+        private void ClienteChatFrm_Load(object sender, EventArgs e)
         {
+            direccionTxt.Text = ObtenerIPLocal(); }
+
+        private void IniciarConexion(){
             lecturaThread = new Thread(new ThreadStart(EjecutarCliente));
             lecturaThread.Start();
         } //fin del metodo ClienteChatFrm_Load
@@ -108,7 +112,7 @@ namespace ProyectoClienteGiulianoGerlo
 
                 //Paso 1 : crear TcpClient y conectar al servidor
                 cliente = new TcpClient();
-                cliente.Connect("127.0.0.1", 50000);
+                cliente.Connect(direccionTxt.Text, 50000);
 
                 //Paso 2: obtener NetworkStream asociado con TcpClient
                 salida = cliente.GetStream();
@@ -152,11 +156,34 @@ namespace ProyectoClienteGiulianoGerlo
             }// fin de catch
         }
 
+        public string ObtenerIPLocal()
+        {
+            string ipLocal = string.Empty;
 
+            // Obtiene las direcciones IP del host local
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (IPAddress ip in host.AddressList)
+            {
+                // Filtra solo las direcciones IPv4
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    ipLocal = ip.ToString();
+                    break; // Se detiene en la primera IP IPv4 que encuentre
+                }
+            }
+
+            return ipLocal;
+        }
 
         private void salidaTxt_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            IniciarConexion();
         }
     }
 } //fin de ClienteChatFrm

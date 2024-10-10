@@ -30,9 +30,31 @@ namespace ProyectoServidorGerloBarrile
         private BinaryReader lector; //facilita la lectura del flujo
 
 
+
+        public string ObtenerIPLocal()
+        {
+            string ipLocal = string.Empty;
+
+            // Obtiene las direcciones IP del host local
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (IPAddress ip in host.AddressList)
+            {
+                // Filtra solo las direcciones IPv4
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    ipLocal = ip.ToString();
+                    break; // Se detiene en la primera IP IPv4 que encuentre
+                }
+            }
+
+            return ipLocal;
+        }
         //inicaliza el proceso para la lecutra
         private void Servidor_Load(object sender, EventArgs e)
         {
+            direccionTxt.Text = ObtenerIPLocal();
+
             lecturaThread = new Thread(new ThreadStart(EjecutarServidor));
             lecturaThread.Start();
         } // fin del metodo
@@ -105,62 +127,64 @@ namespace ProyectoServidorGerloBarrile
             TcpListener oyente;
             int contador = 1;
 
-            //espera conexion y muestra el texto que envia el cliente
+            // Espera conexión y muestra el texto que envía el cliente
             try
             {
-                //Paso1 crea tcplistener
-                IPAddress local = IPAddress.Parse(salidaTxt.Text);
+                // Paso 1: Crea TcpListener
+                string ipUsuario = direccionTxt.Text; // Obtiene la IP ingresada por el usuario
+                IPAddress local = IPAddress.Parse(ipUsuario); // Parsea la IP desde el campo de texto
+
                 oyente = new TcpListener(local, 50000);
 
-                //Paso2 espera la solicitud de conexion
+                // Paso 2: Espera la solicitud de conexión
                 oyente.Start();
 
-                //Paso3 Establece la conexion con base en la solicitud del cliente
+                // Paso 3: Establece la conexión con base en la solicitud del cliente
                 while (true)
                 {
-                    MostrarMensaje("Esperando la conexion\r\n");
+                    MostrarMensaje("Esperando la conexión\r\n");
 
-                    //Acepta una conexion entrante
+                    // Acepta una conexión entrante
                     conexion = oyente.AcceptSocket();
 
-                    //Crea obj asociado con el socket
+                    // Crea obj asociado con el socket
                     socketStream = new NetworkStream(conexion);
 
-                    //Crea obj para transferir datos a traves de un flujo
+                    // Crea obj para transferir datos a través de un flujo
                     escritor = new BinaryWriter(socketStream);
                     lector = new BinaryReader(socketStream);
 
-                    MostrarMensaje("Conexion" + contador + "recibida.\r\n");
+                    MostrarMensaje("Conexión " + contador + " recibida.\r\n");
 
-                    //Informa al cliente conexion exitosa
-                    escritor.Write("Servidor>>> Conexion exitosa");
+                    // Informa al cliente conexión exitosa
+                    escritor.Write("Servidor>>> Conexión exitosa");
 
-                    DeshabilitarEntrada(false); //Habilita la entrada del entradaTxt
+                    DeshabilitarEntrada(false); // Habilita la entrada del entradaTxt
 
                     string respuesta = "";
 
-                    //Paso4 Lee los datos del string enviado
+                    // Paso 4: Lee los datos del string enviado
                     do
                     {
                         try
                         {
-                            //lee la string que se envia al cliente
+                            // Lee la string que se envía al cliente
                             respuesta = lector.ReadString();
 
-                            //muestra el msj
+                            // Muestra el mensaje
                             MostrarMensaje("\r\n" + respuesta);
 
                         }
                         catch (Exception)
                         {
-                            //maneja la excepcion si hay error al leer datos
+                            // Maneja la excepción si hay error al leer datos
                             break;
                         }
                     } while (respuesta != "Cliente >>> TERMINAR" && conexion.Connected);
 
-                    MostrarMensaje("\r\n El usuario termino la conexion \r\n");
+                    MostrarMensaje("\r\n El usuario terminó la conexión \r\n");
 
-                    //Paso5 Cierra la conexion
+                    // Paso 5: Cierra la conexión
                     escritor.Close();
                     lector.Close();
                     socketStream.Close();
@@ -171,12 +195,13 @@ namespace ProyectoServidorGerloBarrile
                 }
 
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 MessageBox.Show(error.ToString());
             }
 
-        } //fin metodo EjecutarServido
+        } // fin método EjecutarServidor
+ //fin metodo EjecutarServido
 
         private void label1_Click(object sender, EventArgs e)
         {

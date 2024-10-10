@@ -33,6 +33,7 @@ namespace ProyectoClienteGiulianoGerlo
             this.salidaTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.direccionTxt = new System.Windows.Forms.TextBox();
+            this.btnIniciar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // entradaTxt
@@ -69,11 +70,22 @@ namespace ProyectoClienteGiulianoGerlo
             this.direccionTxt.Size = new System.Drawing.Size(100, 23);
             this.direccionTxt.TabIndex = 3;
             // 
+            // btnIniciar
+            // 
+            this.btnIniciar.Location = new System.Drawing.Point(586, 312);
+            this.btnIniciar.Name = "btnIniciar";
+            this.btnIniciar.Size = new System.Drawing.Size(75, 23);
+            this.btnIniciar.TabIndex = 4;
+            this.btnIniciar.Text = "Inicar";
+            this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
+            // 
             // ClienteChatFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 362);
+            this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.direccionTxt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.salidaTxt);
@@ -93,6 +105,7 @@ namespace ProyectoClienteGiulianoGerlo
         private System.Windows.Forms.TextBox salidaTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox direccionTxt;
+        private System.Windows.Forms.Button btnIniciar;
     }
 }
 
