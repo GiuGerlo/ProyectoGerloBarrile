@@ -45,7 +45,7 @@ namespace ProyectoServidorGerloBarrile
             // 
             // salidaTxt
             // 
-            this.salidaTxt.Location = new System.Drawing.Point(47, 76);
+            this.salidaTxt.Location = new System.Drawing.Point(47, 68);
             this.salidaTxt.Multiline = true;
             this.salidaTxt.Name = "salidaTxt";
             this.salidaTxt.ReadOnly = true;
@@ -74,13 +74,14 @@ namespace ProyectoServidorGerloBarrile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 331);
+            this.ClientSize = new System.Drawing.Size(654, 311);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.direccionTxt);
             this.Controls.Add(this.salidaTxt);
             this.Controls.Add(this.entradaTxt);
             this.Name = "Servidor";
-            this.Text = "ServidorGB";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Chat Servidor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Servidor_FormClosing);
             this.Load += new System.EventHandler(this.Servidor_Load);
             this.ResumeLayout(false);

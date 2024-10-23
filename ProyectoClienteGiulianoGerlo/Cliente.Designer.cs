@@ -38,9 +38,9 @@ namespace ProyectoClienteGiulianoGerlo
             // 
             // entradaTxt
             // 
-            this.entradaTxt.Location = new System.Drawing.Point(39, 12);
+            this.entradaTxt.Location = new System.Drawing.Point(39, 26);
             this.entradaTxt.Name = "entradaTxt";
-            this.entradaTxt.Size = new System.Drawing.Size(504, 23);
+            this.entradaTxt.Size = new System.Drawing.Size(411, 23);
             this.entradaTxt.TabIndex = 0;
             this.entradaTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entradaTxt_KeyDown);
             // 
@@ -50,14 +50,14 @@ namespace ProyectoClienteGiulianoGerlo
             this.salidaTxt.Multiline = true;
             this.salidaTxt.Name = "salidaTxt";
             this.salidaTxt.ReadOnly = true;
-            this.salidaTxt.Size = new System.Drawing.Size(504, 271);
+            this.salidaTxt.Size = new System.Drawing.Size(411, 209);
             this.salidaTxt.TabIndex = 1;
             this.salidaTxt.TextChanged += new System.EventHandler(this.salidaTxt_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(574, 15);
+            this.label1.Location = new System.Drawing.Point(503, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 15);
             this.label1.TabIndex = 2;
@@ -65,7 +65,7 @@ namespace ProyectoClienteGiulianoGerlo
             // 
             // direccionTxt
             // 
-            this.direccionTxt.Location = new System.Drawing.Point(595, 12);
+            this.direccionTxt.Location = new System.Drawing.Point(524, 26);
             this.direccionTxt.Name = "direccionTxt";
             this.direccionTxt.Size = new System.Drawing.Size(100, 23);
             this.direccionTxt.TabIndex = 3;
@@ -84,7 +84,7 @@ namespace ProyectoClienteGiulianoGerlo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 362);
+            this.ClientSize = new System.Drawing.Size(654, 311);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.direccionTxt);
             this.Controls.Add(this.label1);

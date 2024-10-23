@@ -21,6 +21,8 @@ namespace ProyectoServidorGerloBarrile
         public Servidor()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
         }
 
         private Socket conexion; //Socket para aceptar la conexion
