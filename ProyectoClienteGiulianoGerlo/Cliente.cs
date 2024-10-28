@@ -187,5 +187,10 @@ namespace ProyectoClienteGiulianoGerlo
         {
             IniciarConexion();
         }
+
+        private void btnConexion_Click(object sender, EventArgs e)
+        {
+            IniciarConexion();
+        }
     }
 } //fin de ClienteChatFrm
